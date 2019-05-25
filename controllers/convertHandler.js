@@ -11,11 +11,11 @@ function ConvertHandler() {
 		let result
 		const numRegex = /\d*\.?\d*\/?\d*\.?\d*/
 		const dblFractionRegex = /\d*\.?\d*\/\d*\.?\d*\/\d*/
-		const unitsOnlyRegex = /^\D$/g
+		const unitsOnlyRegex = /^\D+$/g
 		if (input.match(unitsOnlyRegex)) {
 			return 1
 		} else if (input.match(numRegex) && input.match(dblFractionRegex)) {
-			return 'Invalid Number'
+			return 'invalid number'
 		} else if (input.match(numRegex)) {
 			result = input.match(numRegex)[0]
 			return eval(result)

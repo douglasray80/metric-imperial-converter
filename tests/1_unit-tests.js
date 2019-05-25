@@ -6,47 +6,48 @@
  *       (if additional are added, keep them at the very end!)
  */
 
-var chai = require('chai')
-var assert = chai.assert
-var ConvertHandler = require('../controllers/convertHandler.js')
+const chai = require('chai')
+const assert = chai.assert
+const ConvertHandler = require('../controllers/convertHandler.js')
 
-var convertHandler = new ConvertHandler()
+const convertHandler = new ConvertHandler()
 
 suite('Unit Tests', function() {
 	suite('Function convertHandler.getNum(input)', function() {
 		test('Whole number input', function(done) {
-			var input = '32L'
+			const input = '32L'
 			assert.equal(convertHandler.getNum(input), 32)
 			done()
 		})
 
 		test('Decimal Input', function(done) {
-			var input = '32.5L'
+			const input = '32.5L'
 			assert.equal(convertHandler.getNum(input), 32.5)
 			done()
 		})
 
 		test('Fractional Input', function(done) {
-			var input = '1/4g'
+			const input = '1/4kg'
 			assert.equal(convertHandler.getNum(input), 0.25)
 			done()
 		})
 
 		test('Fractional Input w/ Decimal', function(done) {
-			var input = '1.5/2.5g'
+			const input = '1.5/2.5kg'
 			assert.equal(convertHandler.getNum(input), 0.6)
 			done()
 		})
 
 		test('Invalid Input (double fraction)', function(done) {
-			var input = '1/2/4g'
-			assert.equal(convertHandler.getNum(input), 'Invalid Number')
+			const input = '1/2/4gg'
+			assert.equal(convertHandler.getNum(input), 'invalid number')
 			done()
 		})
 
 		test('No Numerical Input', function(done) {
-			let input = 'L'
-			assert.equal(convertHandler.getNum(input), 1)
+			assert.equal(convertHandler.getNum('L'), 1)
+			assert.equal(convertHandler.getNum('kg'), 1)
+			assert.equal(convertHandler.getNum('mi'), 1)
 			done()
 		})
 	})

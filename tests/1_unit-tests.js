@@ -78,6 +78,7 @@ suite('Unit Tests', function() {
 		test('Unknown Unit Input', function(done) {
 			assert.equal(convertHandler.getUnit('24xf'), 'invalid unit');
 			assert.equal(convertHandler.getUnit('1/4zg'), 'invalid unit');
+			assert.equal(convertHandler.getUnit('12'), 'invalid unit');
 			done();
 		});
 	});

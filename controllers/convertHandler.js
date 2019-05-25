@@ -39,7 +39,7 @@ function ConvertHandler() {
 		]
 		const regex = /[a-zA-Z]+$/gi
 		const result = input.match(regex)
-		const unit = result[0]
+		const unit = result && result[0]
 		if (!units.includes(unit)) {
 			return 'invalid unit'
 		} else {
@@ -129,7 +129,17 @@ function ConvertHandler() {
 	}
 
 	this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-		return `${initNum} ${initUnit} converts to ${returnNum} ${returnUnit}`
+		if (initNum === 'invalid number' && initUnit === 'invalid unit') {
+			return 'You must enter a valid number and unit!'
+		} else if (initNum === 'invalid number') {
+			return 'You must enter a valid number!'
+		} else if (initUnit === 'invalid unit') {
+			return 'You must enter a valid unit!' 
+		} else {
+			const initString = this.spellOutUnit(initUnit)
+			const returnString = this.spellOutUnit(returnUnit)
+			return `${initNum} ${initString} converts to ${returnNum} ${returnString}`
+		}
 	}
 }
 

@@ -113,34 +113,34 @@ suite('Unit Tests', function() {
 
 	suite('Function convertHandler.convert(num, unit)', function() {
 		test('Gal to L', function(done) {
-			var input = [5, 'gal']
-			var expected = 18.9271
-			assert.approximately(
-				convertHandler.convert(input[0], input[1]),
-				expected,
-				0.1
-			) //0.1 tolerance
+			// assert.approximately(function(), expected value, tolerance)
+			assert.approximately(convertHandler.convert(5, 'gal'), 18.9271, 0.1)
 			done()
 		})
 
 		test('L to Gal', function(done) {
-			//done();
+			assert.approximately(convertHandler.convert(5, 'L'), 1.3209, 0.1)
+			done()
 		})
 
 		test('Mi to Km', function(done) {
-			//done();
+			assert.approximately(convertHandler.convert(2, 'mi'), 3.2189, 0.1)
+			done()
 		})
 
 		test('Km to Mi', function(done) {
-			//done();
+			assert.approximately(convertHandler.convert(3, 'KM'), 1.8641, 0.1)
+			done()
 		})
 
 		test('Lbs to Kg', function(done) {
-			//done();
+			assert.approximately(convertHandler.convert(235, 'lbs'), 106.5941, 0.1)
+			done()
 		})
 
 		test('Kg to Lbs', function(done) {
-			//done();
+			assert.approximately(convertHandler.convert(12, 'kg'), 26.4555, 0.1)
+			done()
 		})
 	})
 })

@@ -48,9 +48,29 @@ function ConvertHandler() {
 	}
 
 	this.getReturnUnit = function(initUnit) {
-		var result
-
-		return result
+		const input = initUnit.toLowerCase()
+		switch (input) {
+			case 'gal':
+				return 'l'
+				break
+			case 'l':
+				return 'gal'
+				break
+			case 'mi':
+				return 'km'
+				break
+			case 'km':
+				return 'mi'
+				break
+			case 'lbs':
+				return 'kg'
+				break
+			case 'kg':
+				return 'lbs'
+				break
+			default:
+				return 'invalid unit'
+		}
 	}
 
 	this.spellOutUnit = function(unit) {

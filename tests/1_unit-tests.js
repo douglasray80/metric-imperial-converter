@@ -54,7 +54,7 @@ suite('Unit Tests', function() {
 
 	suite('Function convertHandler.getUnit(input)', function() {
 		test('For Each Valid Unit Inputs', function(done) {
-			var input = [
+			const units = [
 				'gal',
 				'l',
 				'mi',
@@ -68,17 +68,20 @@ suite('Unit Tests', function() {
 				'LBS',
 				'KG'
 			]
-			input.forEach(function(ele) {
-				assert.equal(getUnit(input), ele)
+			units.forEach(function(ele) {
+				assert.equal(convertHandler.getUnit(`14${ele}`), ele)
+				assert.equal(convertHandler.getUnit(`2/5${ele}`), ele)
 			})
 			done()
 		})
 
 		test('Unknown Unit Input', function(done) {
-			//done();
+			assert.equal(convertHandler.getUnit('24xf'), 'invalid unit')
+			assert.equal(convertHandler.getUnit('1/4zg'), 'invalid unit')
+			done()
 		})
 	})
-
+	
 	suite('Function convertHandler.getReturnUnit(initUnit)', function() {
 		test('For Each Valid Unit Inputs', function(done) {
 			var input = ['gal', 'l', 'mi', 'km', 'lbs', 'kg']

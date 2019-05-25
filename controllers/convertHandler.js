@@ -23,9 +23,28 @@ function ConvertHandler() {
 	}
 
 	this.getUnit = function(input) {
-		var result
-
-		return result
+		const units = [
+			'gal',
+			'l',
+			'mi',
+			'km',
+			'lbs',
+			'kg',
+			'GAL',
+			'L',
+			'MI',
+			'KM',
+			'LBS',
+			'KG'
+		]
+		const regex = /[a-zA-Z]+$/gi
+		const result = input.match(regex)
+		const unit = result[0]
+		if (!units.includes(unit)) {
+			return 'invalid unit'
+		} else {
+			return unit
+		}
 	}
 
 	this.getReturnUnit = function(initUnit) {

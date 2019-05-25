@@ -74,9 +74,29 @@ function ConvertHandler() {
 	}
 
 	this.spellOutUnit = function(unit) {
-		var result
-
-		return result
+		const input = unit.toLowerCase()
+		switch (input) {
+			case 'gal':
+				return 'gallons'
+				break
+			case 'l':
+				return 'litres'
+				break
+			case 'mi':
+				return 'miles'
+				break
+			case 'km':
+				return 'kilometres'
+				break
+			case 'lbs':
+				return 'pounds'
+				break
+			case 'kg':
+				return 'kilograms'
+				break
+			default:
+				return 'invalid unit'
+		}
 	}
 
 	this.convert = function(initNum, initUnit) {
